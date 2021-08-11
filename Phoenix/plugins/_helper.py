@@ -7,27 +7,27 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 from . import *
 
 msg = f"""
-**⚡ ρøıƨøп ʙᴏᴛ Øp ⚡**
+**⚡ ρнσєηιχ Øp ⚡**
 
-  •        [📑 Repo 📑](https://github.com/garima-rathore/PoisonBot)
+  •        [📑 Repo 📑](https://github.com/garima-rathore/Phoenix)
 
-  •  ©️ {hell_channel} ™
+  •  ©️ {phoenix_channel} ™
 """
 botname = Config.BOT_USERNAME
 
-@bot.on(hell_cmd(pattern="repo$"))
+@bot.on(phoenix_cmd(pattern="repo$"))
 @bot.on(sudo_cmd(pattern="repo$", allow_sudo=True))
 async def repo(event):
     try:
-        hell = await bot.inline_query(botname, "repo")
-        await hell[0].click(event.chat_id)
-        if event.sender_id == ForGo10God:
+        phoenix = await bot.inline_query(botname, "repo")
+        await phoenix[0].click(event.chat_id)
+        if event.sender_id == me_izz_shreef:
             await event.delete()
     except (noin, dedbot):
         await eor(event, msg)
 
 
-@bot.on(hell_cmd(pattern="help ?(.*)", outgoing=True))
+@bot.on(phoenix_cmd(pattern="help ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="help ?(.*)", allow_sudo=True))
 async def yardim(event):
     if event.fwd_from:
@@ -35,7 +35,7 @@ async def yardim(event):
     tgbotusername = Config.BOT_USERNAME
     input_str = event.pattern_match.group(1)
     if tgbotusername is not None or input_str == "text":
-        results = await event.client.inline_query(tgbotusername, "hellbot_help")
+        results = await event.client.inline_query(tgbotusername, "phoenix_help")
         await results[0].click(
             event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
         )
@@ -52,9 +52,9 @@ async def yardim(event):
         else:
           await event.edit(input_str + " is not a valid plugin!")
 
-@bot.on(hell_cmd(pattern="plinfo(?: |$)(.*)", outgoing=True))
+@bot.on(phoenix_cmd(pattern="plinfo(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="plinfo(?: |$)(.*)", allow_sudo=True))
-async def hellbott(event):
+async def phoenix(event):
     if event.fwd_from:
         return
     args = event.pattern_match.group(1).lower()
@@ -81,4 +81,4 @@ async def hellbott(event):
             string += "\n"
         await eod(event, "Please Specify A Module Name Of Which You Want Info" + "\n\n" + string)
 
-# hellbot
+# PHOENIX BOT OP
