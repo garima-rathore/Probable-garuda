@@ -9,23 +9,23 @@ from . import *
 
 #-------------------------------------------------------------------------------
 
-hell_pic = Config.ALIVE_PIC or "https://telegra.ph/file/0d043036c5c309404c734.mp4"
+phoenix_pic = Config.ALIVE_PIC or "https://telegra.ph/file/337b449d72c39b88f3167.jpg"
 alive_c = f"""  🔺 ╔═══╗                   ╔═══╗ 🔺  
-╔══🔥🔥  ρøıƨøп ʙᴏᴛ  🔥🔥══╗
+╔══🔥🔥  𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙  🔥🔥══╗
  🔻╚═══╝                   ╚═══╝ 🔻
 
  ┏━━━━━━━━━━━━━━━━
  ┣ ✪ 🅼**ᴀꜱᴛᴇʀ** ✪
  ┣
- ┣『 {hell_mention} 』
+ ┣『 {phoenix_mention} 』
  ┣
  ┗━━━━━━━━━━━━━━━━  
 ┏━━━━━━━━━━━━━━━━
 ┣ ➤ **𝐓ᴇʟᴇᴛʜᴏɴ 𝐕ᴇʀꜱɪᴏɴ** 
 ┣      ┗ ⌜{tel_ver}⌟
 ┣━━━━━━━━━━━━━━━━
-┣ ➤ **𝐏ᴏɪꜱᴏɴ 𝐕ᴇʀꜱɪᴏɴ**
-┣      ┗ ⌜{hell_ver}⌟
+┣ ➤ **ρнσєηιχ 𝐕ᴇʀꜱɪᴏɴ**
+┣      ┗ ⌜{phoenix_ver}⌟
 ┣━━━━━━━━━━━━━━━━
 ┣ ➤ **𝐒ᴜᴅᴏ** 
 ┣      ┗ ⌜{is_sudo}⌟
@@ -38,132 +38,44 @@ alive_c = f"""  🔺 ╔═══╗                   ╔═══╗ 🔺
 """
 
 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # MADE BY TECHNO PRO ( @DARK_DEVIL_OP ) 🥺🥺
 
 # @me_izz_shreef is Piro 🥺😂
 
 #hmm......m
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #-------------------------------------------------------------------------------
 
-@bot.on(hell_cmd(outgoing=True, pattern="alive$"))
+@bot.on(phoenix_cmd(outgoing=True, pattern="alive$"))
 @bot.on(sudo_cmd(pattern="alive$", allow_sudo=True))
-async def up(hell):
-    if hell.fwd_from:
+async def up(phoenix):
+    if phoenix.fwd_from:
         return
-    await hell.get_chat()
-    await hell.delete()
-    await bot.send_file(hell.chat_id, hell_pic, caption=alive_c)
-    await hell.delete()
+    await phoenix.get_chat()
+    await phoenix.delete()
+    await bot.send_file(phoenix.chat_id, phoenix_pic, caption=alive_c)
+    await phoenix.delete()
 
 msg = f"""
-**⚡  ρøıƨøп ʙᴏᴛ Øp ⚡**
+**⚡  ᴘʜᴏᴇɴɪx  ʙᴏᴛ ᴡᴏʀᴋɪɴɢ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ
+ ⚡**
 {Config.ALIVE_MSG}
 **🏅 𝙱𝚘𝚝 𝚂𝚝𝚊𝚝𝚞𝚜 🏅**
 **Telethon :**  `{tel_ver}`
-** ☠ρøıƨøп ʙᴏᴛ☠ :**  **{hell_ver}**
+** ☠ρнσєηιχ ☠ :**  **{phoenix_ver}**
 **Uptime   :**  `{uptime}`
 **Abuse    :**  **{abuse_m}**
 **Sudo      :**  **{is_sudo}**
 """
 botname = Config.BOT_USERNAME
 
-@bot.on(hell_cmd(pattern="poison$"))
-@bot.on(sudo_cmd(pattern="poison$", allow_sudo=True))
-async def hell_a(event):
+@bot.on(phoenix_cmd(pattern="phoenix$"))
+@bot.on(sudo_cmd(pattern="phoenix$", allow_sudo=True))
+async def phoenix_a(event):
     try:
-        hell = await bot.inline_query(botname, "alive")
-        await hell[0].click(event.chat_id)
-        if event.sender_id == me_izz_shreef:   #Maybe it may result in an error 😂  ©TheTitansNetwork
+        phoenix = await bot.inline_query(botname, "alive")
+        await phoenix[0].click(event.chat_id)
+        if event.sender_id == me_izz_shreef:   #Maybe it may result in an error 😂  
             await event.delete()
     except (noin, dedbot):
         await eor(event, msg)
@@ -172,7 +84,7 @@ async def hell_a(event):
 CmdHelp("alive").add_command(
   "alive", None, "Shows the Default Alive Message"
 ).add_command(
-  "poison", None, "Shows Inline Alive Menu with more details." # ©TheTitansNetwork 2021-23
+  "phoenix", None, "Shows Inline Alive Menu with more details." 
 ).add_warning(
   "✅ Harmless Module"
 ).add()
