@@ -1,3 +1,3 @@
-# HellBot Original Configs are imported from here.
+# Phoenix Original Configs are imported from here.
 
-# All configs can be found in [hell_config.py](https://github.com/TheVaders/InVade/blob/master/hell_config.py) in root dir
+# All configs can be found in [phoenix_config.py](https://github.com/garima-rathore/Probable-garuda/blob/master/hell_config.py) in root dir
