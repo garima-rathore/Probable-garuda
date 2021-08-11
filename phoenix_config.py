@@ -1,4 +1,4 @@
-# IF YOU ARE HOSTING ☠ρøıƨøп ʙᴏᴛ☠ ON OTHER VPS OR LOCALLY RATHER THAN HEROKU
+# IF YOU ARE HOSTING 😈𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙😈 ON OTHER VPS OR LOCALLY RATHER THAN HEROKU
 # THEN DON'T EDIT THIS FILE.
 # GO AND EDIT ex_config.py AND RENAME IT TO config.py
 # AND FILL THE REQUIRED VARS THERE.
@@ -12,8 +12,8 @@ from telethon.tl.types import ChatBannedRights
 class Config(object):
     LOGGER = True
     ABUSE = os.environ.get("ABUSE", None)
-    ALIVE_MSG = os.environ.get("ALIVE_MSG", "⚡ ☠ρøıƨøп ʙᴏᴛ☠ ⚡")
-    ALIVE_PIC = os.environ.get("ALIVE_PIC", "https://telegra.ph/file/04cdefe5ed7732a67eaee.jpg")
+    ALIVE_MSG = os.environ.get("ALIVE_MSG", " 😈𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙😈")
+    ALIVE_PIC = os.environ.get("ALIVE_PIC", "https://telegra.ph/file/337b449d72c39b88f3167.jpg")
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(
         until_date=None,
         view_messages=None,
@@ -27,7 +27,7 @@ class Config(object):
         t_file = open(TMP_DOWNLOAD_DIRECTORY+"auth_token.txt","w")
         t_file.write(AUTH_TOKEN_DATA)
         t_file.close()
-    BIO_MSG = os.environ.get("BIO_MSG", "ʟɛɢɛռɖaʀʏ ᴀғ ☠ρøıƨøп ʙᴏᴛ☠")
+    BIO_MSG = os.environ.get("BIO_MSG", "😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 𝖀𝖘𝖊𝖗 😈 ")
     BL_CHAT = set(int(x) for x in os.environ.get("BL_CHAT", "").split())
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
@@ -38,7 +38,7 @@ class Config(object):
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
     DB_URI = os.environ.get("DATABASE_URL", None)
     DUAL_LOG = os.environ.get("DUAL_LOG", None)
-    EMOJI_IN_HELP = os.environ.get("EMOJI_IN_HELP", "🔸")
+    EMOJI_IN_HELP = os.environ.get("EMOJI_IN_HELP", "☠️")
     FBAN_LOG_GROUP = os.environ.get("FBAN_LOG_GROUP", None)
     if FBAN_LOG_GROUP:
         FBAN_LOG_GROUP = int(FBAN_LOG_GROUP)
@@ -77,21 +77,21 @@ class Config(object):
     if PM_LOG_ID:
         PM_LOG_ID = int(PM_LOG_ID)
     PM_PERMIT = os.environ.get("PM_PERMIT", "ENABLE")
-    PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", "https://telegra.ph/file/c2fe9d2d6ca9f59a8f54a.jpg")
+    PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", "https://telegra.ph/file/3cf950163cb4e635322e2.jpg")
     REMOVE_BG_API = os.environ.get("REMOVE_BG_API", None)
     SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get("SCREEN_SHOT_LAYER_ACCESS_KEY", None)
     STICKER_PACKNAME = os.environ.get("STICKER_PACKNAME", None)
-    HELLBOT_SESSION = os.environ.get("HELLBOT_SESSION", None)
+    PHOENIX_SESSION = os.environ.get("PHOENIX_SESSION", None)
     SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"\.")
     SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "").split())
     TAG_LOGGER = os.environ.get("TAG_LOGGER", None)
     if TAG_LOGGER: 
         TAG_LOGGER = int(TAG_LOGGER)
-    TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "☠ρøıƨøп ʙᴏᴛ☠")
+    TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "😈𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙😈")
     TEMP_DIR = os.environ.get("TEMP_DIR", None)
     TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
     TZ = os.environ.get("TZ", "Asia/Kolkata")
-    UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/garima-rathore/HellBot")  #necessary 
+    UPSTREAM_REPO = os.environ.get("UPSTREAM_REPO", "https://github.com/garima-rathore/Phoenix")  #necessary 
     WEATHER_API = os.environ.get("WEATHER_API", None)
     YOUR_NAME = os.environ.get("YOUR_NAME", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
@@ -105,4 +105,4 @@ class Development(Config):
     LOGGER = True
 
 
-# hellbot
+# PHOENIX USERBOT MADE BY @me_izz_shreef
