@@ -1,24 +1,24 @@
 import datetime
-from hellbot import *
-from hellbot.config import Config
-from hellbot.helpers import *
-from hellbot.utils import *
-from hellbot.random_strings import *
-from hellbot.version import __hell__
+from phoenix import *
+from phoenix.config import Config
+from phoenix.helpers import *
+from phoenix.utils import *
+from phoenix.random_strings import *
+from phoenix.version import __phoenix__
 from telethon import version
 
 
-HELL_USER = bot.me.first_name
+PHOENIX_USER = bot.me.first_name
 me_izz_shreef = bot.uid
-hell_mention = f"[{HELL_USER}](tg://user?id={me_izz_shreef})"
-hell_logo = "./hellbot/resources/pics/poison_logo.jpg"
+phoenix_mention = f"[{PHOENIX_USER}](tg://user?id={me_izz_shreef})"
+phoenix_logo = "./phoenix/resources/pics/poison_logo.jpg"
 cjb = "./hellbot/resources/pics/cjb.jpg"
-restlo = "./hellbot/resources/pics/rest.jpeg"
-shuru = "./hellbot/resources/pics/shuru.jpg"
-hl = Config.HANDLER
+restlo = "./phoenix/resources/pics/rest.jpeg"
+shuru = "./phoenix/resources/pics/shuru.jpg"
+pl = Config.HANDLER
 shl = Config.SUDO_HANDLER
-hell_ver = __hell__
-tel_ver = version.__version__
+phoenix_ver = __phoenix__
+phoenix_ver = version.__version__
 
 async def get_user_id(ids):
     if str(ids).isdigit():
@@ -42,16 +42,16 @@ else:
 START_TIME = datetime.datetime.now()
 uptime = f"{str(datetime.datetime.now() - START_TIME).split('.')[0]}"
 my_channel = Config.MY_CHANNEL or "shinchan_the_h4ch3r"
-my_group = Config.MY_GROUP or "shinchan_the_hacker"
+my_group = Config.MY_GROUP or "phoenixusersupport"
 if "@" in my_channel:
     my_channel = my_channel.replace("@", "")
 if "@" in my_group:
     my_group = my_group.replace("@", "")
 
 chnl_link = "https://t.me/shinchan_the_h4ch3r"
-hell_channel = f"[†hê ρøıƨøп ʙᴏᴛ]({chnl_link})"
-grp_link = "https://t.me/shinchan_the_hacker"
-hell_grp = f"[ρøıƨøп ʙᴏᴛ Group]({grp_link})"
+phoenix_channel = f"[†hê ρнσєηιχ]({chnl_link})"
+grp_link = "https://t.me/phoenixusersupport" 
+phoenix_grp = f"[ρнσєηιχ ʙᴏᴛ Group]({grp_link})"
 
 WELCOME_FORMAT = """**Use these fomats in your welcome note to make them attractive.**
   {mention} :  To mention the user
@@ -70,4 +70,4 @@ WELCOME_FORMAT = """**Use these fomats in your welcome note to make them attract
 """
 # will add more soon
 
-# hellbot
+# ρнσєηιχ
