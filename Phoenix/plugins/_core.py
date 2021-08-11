@@ -10,7 +10,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 from . import *
 
 
-@bot.on(hell_cmd(pattern=r"cmds"))
+@bot.on(phoenix_cmd(pattern=r"cmds"))
 @bot.on(sudo_cmd(pattern=r"cmds", allow_sudo=True))
 async def kk(event):
     if event.fwd_from:
@@ -18,8 +18,8 @@ async def kk(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
-    cmd = "ls hellbot/plugins"
-    thumb = hell_logo
+    cmd = "ls phoenix/plugins"
+    thumb = phoenix_logo
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -31,7 +31,7 @@ async def kk(event):
     if len(OUTPUT) > 69:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "cmd_list.text"
-            hell_file = await bot.send_file(
+            phoenix_file = await bot.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -39,19 +39,19 @@ async def kk(event):
                 thumb=thumb,
                 reply_to=reply_to_id,
             )
-            await edit_or_reply(hell_file, f"Output Too Large. This is the file for the list of plugins in bot.\n\n**BY :-** {HELL_USER}")
+            await edit_or_reply(phoenix_file, f"Output Too Large. This is the file for the list of plugins in bot.\n\n**BY :-** {PHOENIX_USER}")
             await event.delete()
 
 
-@bot.on(hell_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
+@bot.on(phoenix_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"send (?P<shortname>\w+)", allow_sudo=True))
 async def send(event):
     if event.fwd_from:
         return
     message_id = event.message.id
-    thumb = hell_logo
+    thumb = phoenix_logo
     input_str = event.pattern_match.group(1)
-    omk = f"**• Plugin name ≈** `{input_str}`\n**• Uploaded by ≈** {hell_mention}\n\n⚡ **[☠ρøıƨøп ʙᴏᴛ☠]({chnl_link})** ⚡"
+    omk = f"**• Plugin name ≈** `{input_str}`\n**• Uploaded by ≈** {phoenix_mention}\n\n⚡ **[ρнσєηιχ ]({chnl_link})** ⚡"
     the_plugin_file = "./hellbot/plugins/{}.py".format(input_str)
     if os.path.exists(the_plugin_file):
         lauda = await event.client.send_file(
@@ -65,10 +65,10 @@ async def send(event):
         )
         await event.delete()
     else:
-        await eod(event, "File not found..... Kek")
+        await eod(event, "File not found..... Kk vaii !!!")
 
 
-@bot.on(hell_cmd(pattern="install$", outgoing=True))
+@bot.on(phoenix_cmd(pattern="install$", outgoing=True))
 @bot.on(sudo_cmd(pattern="install$", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
@@ -82,7 +82,7 @@ async def install(event):
         try:
             downloaded_file_name = await event.client.download_media(  # pylint:disable=E0602
                 await event.get_reply_message(),
-                "./hellbot/plugins/"  # pylint:disable=E0602
+                "./phoenix/plugins/"  # pylint:disable=E0602
             )
             if "(" not in downloaded_file_name:
                 path1 = Path(downloaded_file_name)
@@ -100,7 +100,7 @@ async def install(event):
                             a = "__Installing...__"
                             b = 1
                         await eor(event, a)
-                    return await eor(event, f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {hell_mention}\n\n{string}\n\n        ⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ ɦɛʟʟɮօt]({chnl_link})** ⚡", link_preview=False)
+                    return await eor(event, f"✅ **Installed module** :- `{shortname}` \n✨ BY :- {phoenix_mention}\n\n{string}\n\n        ⚡ **[ʟɛɢɛռɖaʀʏ ᴀғ ρнσєηιχ]({chnl_link})** ⚡", link_preview=False)
                 return await eor(event, f"Installed module `{os.path.basename(downloaded_file_name)}`")
             else:
                 os.remove(downloaded_file_name)
@@ -109,13 +109,13 @@ async def install(event):
             await eod(event, f"**Failed to Install** \n`Error`\n{str(e)}")
             return os.remove(downloaded_file_name)
 
-@bot.on(hell_cmd(pattern=r"uninstall (?P<shortname>\w+)", outgoing=True))
+@bot.on(phoenix_cmd(pattern=r"uninstall (?P<shortname>\w+)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"uninstall (?P<shortname>\w+)", allow_sudo=True))
 async def uninstall(kraken):
     if kraken.fwd_from:
         return
     shortname = kraken.pattern_match["shortname"]
-    dir_path =f"./hellbot/plugins/{shortname}.py"
+    dir_path =f"./phoenix/plugins/{shortname}.py"
     try:
         remove_plugin(shortname)
         os.remove(dir_path)
@@ -124,7 +124,7 @@ async def uninstall(kraken):
         await kraken.edit("Error: %s : %s" % (dir_path, e.strerror))
 
 
-@bot.on(hell_cmd(pattern=r"unload (?P<shortname>\w+)$"))
+@bot.on(phoenix_cmd(pattern=r"unload (?P<shortname>\w+)$"))
 @bot.on(sudo_cmd(pattern=r"unload (?P<shortname>\w+)$", allow_sudo=True))
 async def unload(event):
     if event.fwd_from:
@@ -141,7 +141,7 @@ async def unload(event):
         )
 
 
-@bot.on(hell_cmd(pattern=r"load (?P<shortname>\w+)$"))
+@bot.on(phoenix_cmd(pattern=r"load (?P<shortname>\w+)$"))
 @bot.on(sudo_cmd(pattern=r"load (?P<shortname>\w+)$", allow_sudo=True))
 async def load(event):
     if event.fwd_from:
@@ -162,7 +162,7 @@ async def load(event):
 CmdHelp("core").add_command(
   "install", "<reply to a .py file>", "Installs the replied python file if suitable to Hêllẞø†'s codes."
 ).add_command(
-  "uninstall", "<plugin name>", "Uninstalls the given plugin from Hêllẞø†. To get that again do .restart", "uninstall alive"
+  "uninstall", "<plugin name>", "Uninstalls the given plugin from ρнσєηιχ. To get that again do .restart", "uninstall alive"
 ).add_command(
   "load", "<plugin name>", "Loades the unloaded plugin to your userbot", "load alive"
 ).add_command(
