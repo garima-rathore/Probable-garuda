@@ -33,7 +33,7 @@ async def download_video(v_url):
     url = v_url.pattern_match.group(2)
     type = v_url.pattern_match.group(1).lower()
 
-    event = await eor(v_url, "`Preparing to download...`")
+    event = await eor(v_url, "`Preparing to download... powered by @phoenix_ot`")
 
     if type == "a":
         opts = {
@@ -77,7 +77,7 @@ async def download_video(v_url):
         video = True
 
     try:
-        await event.edit("**Fetching YT link...**")
+        await event.edit("**Fetching YT link... powered by @phoenix_ot**")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
     except DownloadError as DE:
@@ -112,7 +112,7 @@ async def download_video(v_url):
     c_time = time.time()
     if song:
         await eor(event, 
-            f"📤 `Preparing to upload audio:`\
+            f"📤 `Preparing to upload audio by @phoenix_ot:`\
         \n\n**{ytdl_data['title']}**\
         \nby *{ytdl_data['uploader']}*"
         )
@@ -137,7 +137,7 @@ async def download_video(v_url):
         await v_url.delete()
     elif video:
         await eor(event, 
-            f"`Preparing to upload video:`\
+            f"`Preparing to upload video by @phoenix_ot:`\
         \n\n**{ytdl_data['title']}**\
         \nby *{ytdl_data['uploader']}*"
         )
@@ -148,7 +148,7 @@ async def download_video(v_url):
             caption=ytdl_data["title"],
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(
-                    d, t, v_url, c_time, "Uploading..", f"{ytdl_data['title']}.mp4"
+                    d, t, v_url, c_time, "Uploading..by @phoenix_ot", f"{ytdl_data['title']}.mp4"
                 )
             ),
         )
