@@ -10,7 +10,7 @@ from telethon.tl.functions.channels import LeaveChannelRequest
 from . import *
 
 
-@bot.on(hell_cmd("kickme", outgoing=True))
+@bot.on(phoenix_cmd("kickme", outgoing=True))
 async def leave(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("😪 **KThnxBye** See u all in hell!!")
@@ -20,7 +20,7 @@ async def leave(e):
         else:
             await eod(e, "**Iz this even a grp?😑**")
 
-@bot.on(hell_cmd(pattern=r"dc"))
+@bot.on(phoenix_cmd(pattern=r"dc"))
 @bot.on(sudo_cmd(pattern=r"dc", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -29,7 +29,7 @@ async def _(event):
     await eor(event, result.stringify())
 
 
-@bot.on(hell_cmd(pattern=r"config"))
+@bot.on(phoenix_cmd(pattern=r"config"))
 @bot.on(sudo_cmd(pattern=r"config", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -40,7 +40,7 @@ async def _(event):
     await eor("Config Saved In You Heroku Logs.")
 
 
-@bot.on(hell_cmd(pattern="schd ?(.*)", outgoing=True))
+@bot.on(phoenix_cmd(pattern="schd ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="schd ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -62,7 +62,7 @@ async def _(event):
         await event.edit(message)
 
 
-@bot.on(hell_cmd(pattern="dm ?(.*)"))
+@bot.on(phoenix_cmd(pattern="dm ?(.*)"))
 @bot.on(sudo_cmd(pattern="dm ?(.*)", allow_sudo=True))
 async def _(event):
     if len(event.text) > 3:
