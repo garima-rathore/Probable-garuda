@@ -6,7 +6,7 @@ import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from hellbot.helpers import runner
+from Phoenix.helpers import runner
 from . import *
 
 
@@ -92,7 +92,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     await event.edit(
-        "✅ Successfully updated ☠ρøıƨøп ʙᴏᴛ☠!\n\nBot is restarting please wait for a minute."
+        "✅ Successfully updated 😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈?!\n\nBot is restarting please wait for a minute."
     )
     args = [sys.executable, "-m", "hellbot"]
     os.execle(sys.executable, *args, os.environ)
@@ -150,7 +150,7 @@ async def upstream(event):
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     if changelog == "" and not force_update:
         await event.edit(
-            "\n**😎 ☠ρøıƨøп ʙᴏᴛ☠† is UP-TO-DATE.**"
+            "\n**😎 😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈 is UP-TO-DATE.**"
             f"\n\n**Version :**  {hell_ver}"
             f"\n**Owner :**  {hell_mention}"
             f"\n**Git Branch :**  {UPSTREAM_REPO_BRANCH}\n"
@@ -166,7 +166,7 @@ async def upstream(event):
             "`Force-Updating ☠ρøıƨøп ʙᴏᴛ☠†. Please wait...`"
         )
     if conf == "now":
-        await event.edit("`☠ρøıƨøп ʙᴏᴛ☠ Update In Progress! Please Wait....`")
+        await event.edit("`😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈 Update In Progress! Please Wait....`")
         await update(event, repo, ups_rem, ac_br)
     return
 
@@ -192,7 +192,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             return repo.__del__()
         await event.edit(
-            "`Updating ☠ρøıƨøп ʙᴏᴛ☠ In Progress...Please wait upto 5 minutes.`"
+            "`Updating 😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈 In Progress...Please wait upto 5 minutes.`"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -216,7 +216,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             await asyncio.sleep(5)
             return await event.delete()
-        await event.edit(f"**Your ☠ρøıƨøп ʙᴏᴛ☠† Is UpToDate**\n\n**Version :**  __{hell_ver}__\n**Oɯɳҽɾ :**  {hell_mention}")
+        await event.edit(f"**Your 😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈 Is UpToDate**\n\n**Version :**  __{hell_ver}__\n**Oɯɳҽɾ :**  {hell_mention}")
     else:
         await event.edit("**Please set up**  `HEROKU_API_KEY`  **from heroku to update!**")
     return
@@ -256,18 +256,18 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit(f"**☠ρøıƨøп ʙᴏᴛ☠† Docker Build In Progress... Type** `{hl}ping`  **after 5 mins to check if Bot is working!**")
+    await event.edit(f"**😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈 Docker Build In Progress... Type** `{hl}ping`  **after 5 mins to check if Bot is working!**")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
 
 CmdHelp("update").add_command(
   "update", None, "Checks if any new update is available."
 ).add_command(
-  "update now", None, "Soft-Update Your ☠ρøıƨøп ʙᴏᴛ☠. Basically if you restart dyno it will go back to previous deploy."
+  "update now", None, "Soft-Update Your 😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈 . Basically if you restart dyno it will go back to previous deploy."
 ).add_command(
-  "update build", None, "Hard-Update Your ☠ρøıƨøп ʙᴏᴛ☠. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
+  "update build", None, "Hard-Update Your 😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
 ).add_info(
-  "☠ρøıƨøп ʙᴏᴛ☠ Updater."
+  "😈 𝕻𝖍𝖔𝖊𝖓𝖎𝖝 𝕭𝖔𝖙 😈 Updater."
 ).add_warning(
   "✅ Harmless Module."
 ).add()
