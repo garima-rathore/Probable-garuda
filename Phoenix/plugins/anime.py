@@ -67,7 +67,7 @@ async def formatJSON(outData):
         return msg
 
 
-@bot.on(hell_cmd(pattern="anilist (.*)"))
+@bot.on(phoenix_cmd(pattern="anilist (.*)"))
 @bot.on(sudo_cmd(pattern="anilist (.*)", allow_sudo=True))
 async def anilist(event):
     if event.fwd_from:
@@ -79,19 +79,19 @@ async def anilist(event):
     await event.edit(msg, link_preview=True)
 
 
-@bot.on(hell_cmd(pattern="anime(?: |$)(.*)"))
+@bot.on(phoenix_cmd(pattern="anime(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="anime(?: |$)(.*)", allow_sudo=True))
 async def nope(hel_):
-    hell = hel_.pattern_match.group(1)
-    if not hell:
-        if hel_.is_reply:
+    phoenix = hel_.pattern_match.group(1)
+    if not phoenix:
+        if phel_.is_reply:
             (await hel_.get_reply_message()).message
         else:
             await eod(hel_, "Sir please give some query to search and download it for you..!"
             )
             return
 
-    troll = await bot.inline_query("AniFluidbot", f".anime {(deEmojify(hell))}")
+    troll = await bot.inline_query("AniFluidbot", f".anime {(deEmojify(phoenix))}")
 
     await troll[0].click(
         hel_.chat_id,
@@ -102,11 +102,11 @@ async def nope(hel_):
     await hel_.delete()
     
     
-@bot.on(hell_cmd(pattern="manga(?: |$)(.*)"))
+@bot.on(phoenix_cmd(pattern="manga(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="manga(?: |$)(.*)", allow_sudo=True))
 async def nope(hel_):
-    hell = hel_.pattern_match.group(1)
-    if not hell:
+    phoenix = hel_.pattern_match.group(1)
+    if not phoenix:
         if hel_.is_reply:
             (await hel_.get_reply_message()).message
         else:
@@ -114,7 +114,7 @@ async def nope(hel_):
             )
             return
 
-    troll = await bot.inline_query("AniFluidbot", f".manga {(deEmojify(hell))}")
+    troll = await bot.inline_query("AniFluidbot", f".manga {(deEmojify(phoenix))}")
 
     await troll[0].click(
         hel_.chat_id,
@@ -125,11 +125,11 @@ async def nope(hel_):
     await hel_.delete()
     
 
-@bot.on(hell_cmd(pattern="character(?: |$)(.*)"))
+@bot.on(phoenix_cmd(pattern="character(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="character(?: |$)(.*)", allow_sudo=True))
 async def nope(hel_):
-    hell = hel_.pattern_match.group(1)
-    if not hell:
+    phoenix = hel_.pattern_match.group(1)
+    if not phoenix:
         if hel_.is_reply:
             (await hel_.get_reply_message()).message
         else:
@@ -137,7 +137,7 @@ async def nope(hel_):
             )
             return
 
-    troll = await bot.inline_query("AniFluidbot", f".character {(deEmojify(hell))}")
+    troll = await bot.inline_query("AniFluidbot", f".character {(deEmojify(phoenix))}")
 
     await troll[0].click(
         hel_.chat_id,
