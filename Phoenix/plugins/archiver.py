@@ -18,7 +18,7 @@ extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
 if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
-@bot.on(hell_cmd(pattern="zip", outgoing=True))
+@bot.on(phoenix_cmd(pattern="zip", outgoing=True))
 @bot.on(sudo_cmd(pattern="zip", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -62,7 +62,7 @@ def zipdir(path, ziph):
             ziph.write(os.path.join(root, file))
             os.remove(os.path.join(root, file))
 
-@bot.on(hell_cmd(pattern="compress"))
+@bot.on(phoenix_cmd(pattern="compress"))
 @bot.on(sudo_cmd(pattern="compress", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -94,7 +94,7 @@ async def _(event):
     await bot.send_file(
         event.chat_id,
         directory_name + ".zip",
-        caption="Zipped By HellBot",
+        caption="Zipped By PHOENIX",
         force_document=True,
         allow_cache=False,
         reply_to=event.message.id,
@@ -112,7 +112,7 @@ def zipdir(path, ziph):
             os.remove(os.path.join(root, file))
 
 
-@bot.on(hell_cmd(pattern="rar ?(.*)"))
+@bot.on(phoenix_cmd(pattern="rar ?(.*)"))
 @bot.on(sudo_cmd(pattern="rar ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -142,7 +142,7 @@ async def _(event):
             await bot.send_file(
                 event.chat_id,
                 directory_name + ".rar",
-                caption="rarred By HellBot",
+                caption="rarred By PHOENIX USERBOT",
                 force_document=True,
                 allow_cache=False,
                 reply_to=event.message.id,
@@ -165,7 +165,7 @@ async def _(event):
         )
 
 
-@bot.on(hell_cmd(pattern="7z ?(.*)"))
+@bot.on(phoenix_cmd(pattern="7z ?(.*)"))
 @bot.on(sudo_cmd(pattern="7z ?(.*)", allow_sudo=True))
 async def _(event): 
     if event.fwd_from:
@@ -195,7 +195,7 @@ async def _(event):
             await bot.send_file(
                 event.chat_id,
                 directory_name + ".7z",
-                caption="7z archived By HellBot",
+                caption="7z archived By Phoenix Bot",
                 force_document=True,
                 allow_cache=False,
                 reply_to=event.message.id,
@@ -216,7 +216,7 @@ async def _(event):
         await event.edit("Local file compressed to `{}`".format(directory_name + ".7z"))
 
 
-@bot.on(hell_cmd(pattern="tar ?(.*)"))
+@bot.on(phoenix_cmd(pattern="tar ?(.*)"))
 @bot.on(sudo_cmd(pattern="tar ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -248,7 +248,7 @@ async def _(event):
             await bot.send_file(
                 event.chat_id,
                 output,
-                caption="TAR By HellBot",
+                caption="TAR By Phoenix",
                 force_document=True,
                 allow_cache=False,
                 reply_to=event.message.id,
@@ -303,7 +303,7 @@ async def create_archive(input_directory):
     return return_name
 
 
-@bot.on(hell_cmd(pattern="unzip"))
+@bot.on(phoenix_cmd(pattern="unzip"))
 @bot.on(sudo_cmd(pattern="unzip", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -396,7 +396,7 @@ async def _(event):
         os.remove(downloaded_file_name)
 
 
-@bot.on(hell_cmd(pattern="unrar"))
+@bot.on(phoenix_cmd(pattern="unrar"))
 @bot.on(sudo_cmd(pattern="unrar", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -488,7 +488,7 @@ async def _(event):
         os.remove(downloaded_file_name)
 
 
-@bot.on(hell_cmd(pattern="untar"))
+@bot.on(phoenix_cmd(pattern="untar"))
 @bot.on(sudo_cmd(pattern="untar", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
