@@ -16,15 +16,15 @@ if not os.path.isdir("./temp"):
     os.makedirs("./temp")
 
 
-@bot.on(hell_cmd(pattern="stoi$"))
+@bot.on(phoenix_cmd(pattern="stoi$"))
 @bot.on(sudo_cmd(pattern="stoi$", allow_sudo=True))
-async def _(hell):
-    if hell.fwd_from:
+async def _(phoenix):
+    if phoenix.fwd_from:
         return
-    reply_to_id = hell.message.id
+    reply_to_id = phoenix.message.id
     if hell.reply_to_msg_id:
-        reply_to_id = hell.reply_to_msg_id
-    event = await eor(hell, "Converting.....")
+        reply_to_id = phoenix.reply_to_msg_id
+    event = await eor(phoenix, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -37,7 +37,7 @@ async def _(hell):
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            caat = await hell.client.send_file(
+            caat = await phoenix.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -48,18 +48,18 @@ async def _(hell):
         else:
             await eod(event, "Can't Convert")
     else:
-        await event.edit(f"Syntax : `{hl}stoi` reply to a Telegram normal sticker")
+        await event.edit(f"Syntax : `{pl}stoi` reply to a Telegram normal sticker")
 
 
-@bot.on(hell_cmd(pattern="itos$"))
+@bot.on(phoenix_cmd(pattern="itos$"))
 @bot.on(sudo_cmd(pattern="itos$", allow_sudo=True))
-async def _(hell):
-    if hell.fwd_from:
+async def _(phoenix):
+    if phoenix.fwd_from:
         return
-    reply_to_id = hell.message.id
-    if hell.reply_to_msg_id:
-        reply_to_id = hell.reply_to_msg_id
-    event = await eor(hell, "Converting.....")
+    reply_to_id = phoenix.message.id
+    if phoenix.reply_to_msg_id:
+        reply_to_id = phoenix.reply_to_msg_id
+    event = await eor(phoenix, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -72,7 +72,7 @@ async def _(hell):
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            caat = await hell.client.send_file(
+            caat = await phoenix.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -83,7 +83,7 @@ async def _(hell):
         else:
             await eod(event, "Can't Convert")
     else:
-        await event.edit(f"Syntax : `{hl}itos` reply to a Telegram normal sticker")
+        await event.edit(f"Syntax : `{pl}itos` reply to a Telegram normal sticker")
 
 
 async def silently_send_message(conv, text):
@@ -93,14 +93,14 @@ async def silently_send_message(conv, text):
     return response
 
 
-@bot.on(hell_cmd(pattern="ttf ?(.*)"))
+@bot.on(phoenix_cmd(pattern="ttf ?(.*)"))
 @bot.on(sudo_cmd(pattern="ttf ?(.*)", allow_sudo=True))
 async def get(event):
     if event.fwd_from:
         return
     name = event.text[5:]
     if name is None:
-        await eod(event, f"reply to text message as `{hl}ttf <file name>`")
+        await eod(event, f"reply to text message as `{pl}ttf <file name>`")
         return
     m = await event.get_reply_message()
     if m.text:
@@ -113,7 +113,7 @@ async def get(event):
         await eod(event, f"Reply to text message as `{hl}ttf <file name>`")
 
 
-@bot.on(hell_cmd(pattern="ftoi$"))
+@bot.on(phoenix_cmd(pattern="ftoi$"))
 @bot.on(sudo_cmd(pattern="ftoi$", allow_sudo=True))
 async def on_file_to_photo(event):
     if event.fwd_from:
@@ -149,36 +149,36 @@ async def on_file_to_photo(event):
     await hbot.delete()
 
 
-@bot.on(hell_cmd(pattern="gif$"))
+@bot.on(phoenix_cmd(pattern="gif$"))
 @bot.on(sudo_cmd(pattern="gif$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    hellreply = await event.get_reply_message()
-    if not hellreply or not hellreply.media or not hellreply.media.document:
+    phoenixreply = await event.get_reply_message()
+    if not phoenixreply or not phoenixreply.media or not phoenixreply.media.document:
         return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
-    if hellreply.media.document.mime_type != "application/x-tgsticker":
+    if phoenixreply.media.document.mime_type != "application/x-tgsticker":
         return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
     reply_to_id = event.message
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
     chat = "@tgstogifbot"
-    hellevent = await edit_or_reply(event, "`Converting to gif ...`")
+    phoenixevent = await edit_or_reply(event, "`Converting to gif ...`")
     async with bot.conversation(chat) as conv:
         try:
             await silently_send_message(conv, "/start")
-            await bot.send_file(chat, hellreply.media)
+            await bot.send_file(chat, phoenixreply.media)
             response = await conv.get_response()
             await bot.send_read_acknowledge(conv.chat_id)
             if response.text.startswith("Send me an animated sticker!"):
-                return await hellevent.edit("`This file is not supported`")
-            hellresponse = response if response.media else await conv.get_response()
+                return await phoenixevent.edit("`This file is not supported`")
+            phoenixresponse = response if response.media else await conv.get_response()
             await bot.send_read_acknowledge(conv.chat_id)
-            hellfile = Path(await event.client.download_media(hellresponse, "./temp/"))
-            hellgif = Path(await unzip(hellfile))
+            phoenixfile = Path(await event.client.download_media(phoenixresponse, "./temp/"))
+            phoenixgif = Path(await unzip(phoenixfile))
             kraken = await bot.send_file(
                 event.chat_id,
-                hellgif,
+                phoenixgif,
                 support_streaming=True,
                 force_document=False,
                 reply_to=reply_to_id,
@@ -193,16 +193,16 @@ async def _(event):
                     unsave=True,
                 )
             )
-            await hellevent.delete()
-            for files in (hellgif, hellfile):
+            await phoenixevent.delete()
+            for files in (phoenixgif, phoenixfile):
                 if files and os.path.exists(files):
                     os.remove(files)
         except YouBlockedUserError:
-            await hellevent.edit("Unblock @tgstogifbot")
+            await phoenixevent.edit("Unblock @tgstogifbot")
             return
 
 
-@bot.on(hell_cmd(pattern="nfc ?(.*)"))
+@bot.on(phoenix_cmd(pattern="nfc ?(.*)"))
 @bot.on(sudo_cmd(pattern="nfc ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -216,12 +216,12 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     if input_str is None:
-        await eod(event, f"Try `{hl}nfc voice` or`{hl}nfc mp3`")
+        await eod(event, f"Try `{pl}nfc voice` or`{pl}nfc mp3`")
         return
     if input_str in ["mp3", "voice"]:
         event = await eor(event, "converting...")
     else:
-        await eod(event, f"Try `{hl}nfc voice` or`{hl}nfc mp3`")
+        await eod(event, f"Try `{pl}nfc voice` or`{pl}nfc mp3`")
         return
     try:
         start = datetime.datetime.now()
