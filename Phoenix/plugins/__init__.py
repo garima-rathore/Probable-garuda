@@ -1,10 +1,10 @@
 import datetime
-from phoenix import *
-from phoenix.config import Config
-from phoenix.helpers import *
-from phoenix.utils import *
-from phoenix.random_strings import *
-from phoenix.version import __phoenix__
+from Phoenix import *
+from Phoenix.config import Config
+from Phoenix.helpers import *
+from Phoenix.utils import *
+from Phoenix.random_strings import *
+from Phoenix.version import __phoenix__
 from telethon import version
 
 
@@ -12,9 +12,9 @@ PHOENIX_USER = bot.me.first_name
 me_izz_shreef = bot.uid
 phoenix_mention = f"[{PHOENIX_USER}](tg://user?id={me_izz_shreef})"
 phoenix_logo = "./phoenix/resources/pics/poison_logo.jpg"
-cjb = "./hellbot/resources/pics/cjb.jpg"
-restlo = "./phoenix/resources/pics/rest.jpeg"
-shuru = "./phoenix/resources/pics/shuru.jpg"
+cjb = "./Phoenix/resources/pics/cjb.jpg"
+restlo = "./Phoenix/resources/pics/rest.jpeg"
+shuru = "./Phoenix/resources/pics/shuru.jpg"
 pl = Config.HANDLER
 shl = Config.SUDO_HANDLER
 phoenix_ver = __phoenix__
