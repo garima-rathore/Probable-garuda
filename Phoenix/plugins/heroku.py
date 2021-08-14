@@ -32,54 +32,54 @@ async def restart(event):
         app = Heroku.apps()[HEROKU_APP_NAME]
         app.restart()
     else:
-        execl(executable, executable, "bash", "HellBot")
+        execl(executable, executable, "bash", "Phoenix")
 
 
-@bot.on(hell_cmd(pattern="restart$"))
+@bot.on(phoenix_cmd(pattern="restart$"))
 @bot.on(sudo_cmd(pattern="restart$", allow_sudo=True))
-async def re(hell):
-    if hell.fwd_from:
+async def re(phoenix):
+    if phoenix.fwd_from:
         return
-    event = await eor(hell, "Restarting Dynos ...")
+    event = await eor(phoenix, "Restarting Dynos ...")
     if HEROKU_API_KEY:
         await restart(event)
     else:
         await event.edit("Please Set Your `HEROKU_API_KEY` to restart Hêllẞø†")
 
 
-@bot.on(hell_cmd(pattern="shutdown$"))
+@bot.on(phoenix_cmd(pattern="shutdown$"))
 @bot.on(sudo_cmd(pattern="shutdown$", allow_sudo=True))
-async def down(hell):
-    if hell.fwd_from:
+async def down(phoenix):
+    if phoenix.fwd_from:
         return
-    await eor(hell, "**[ ! ]** Turning off Hêllẞø† Dynos... Manually turn me on later ಠ_ಠ")
+    await eor(phoenix, "**[ ! ]** Turning off ρнσєηιχ Dynos... Manually turn me on later ಠ_ಠ")
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
         sys.exit(0)
 
 
-@bot.on(hell_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
+@bot.on(phoenix_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
-async def variable(hell):
-    if hell.fwd_from:
+async def variable(phoenix):
+    if phoenix.fwd_from:
         return
     if Config.HEROKU_APP_NAME is not None:
         app = Heroku.app(Config.HEROKU_APP_NAME)
     else:
-        return await eor(hell, "`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
-    exe = hell.pattern_match.group(1)
+        return await eor(phoenix, "`[HEROKU]:" "\nPlease setup your` **HEROKU_APP_NAME**")
+    exe = phoenix.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
-        event = await eor(hell, "Getting Variable Info...")
+        event = await eor(phoenix, "Getting Variable Info...")
         await asyncio.sleep(1.5)
         cap = "Logger me chala jaa bsdk."
         capn = "Saved in LOGGER_ID !!"
         try:
-            variable = hell.pattern_match.group(2).split()[0]
-            if variable in ("HELLBOT_SESSION", "BOT_TOKEN", "HEROKU_API_KEY"):
+            variable = phoenix.pattern_match.group(2).split()[0]
+            if variable in ("PHOENIX_SESSION", "BOT_TOKEN", "HEROKU_API_KEY"):
                 if Config.ABUSE == "ON":
-                    await bot.send_file(hell.chat_id, cjb, caption=cap)
+                    await bot.send_file(phoenix.chat_id, cjb, caption=cap)
                     await event.delete()
                     await bot.send_message(lg_id, f"#HEROKU_VAR \n\n`{heroku_var[variable]}`")
                     return
@@ -102,10 +102,10 @@ async def variable(hell):
             with open("configs.json", "r") as fp:
                 result = fp.read()
                 if len(result) >= 4096:
-                    await hell.client.send_file(
-                        hell.chat_id,
+                    await phoenix.client.send_file(
+                        phoenix.chat_id,
                         "configs.json",
-                        reply_to=hell.id,
+                        reply_to=phoenix.id,
                         caption="`Output too large, sending it as a file`",
                     )
                 else:
@@ -118,15 +118,15 @@ async def variable(hell):
             os.remove("configs.json")
             return
     elif exe == "set":
-        event = await eor(hell, "Setting Heroku Variable...")
-        variable = hell.pattern_match.group(2)
+        event = await eor(phoenix, "Setting Heroku Variable...")
+        variable = phoenix.pattern_match.group(2)
         if not variable:
-            return await event.edit(f"`{hl}set var <Var Name> <Value>`")
-        value = hell.pattern_match.group(3)
+            return await event.edit(f"`{pl}set var <Var Name> <Value>`")
+        value = phoenix.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
-                value = hell.pattern_match.group(2).split()[1]
+                value = phoenix.pattern_match.group(2).split()[1]
             except IndexError:
                 return await event.edit(f"`{hl}set var <Var Name> <Value>`")
         await asyncio.sleep(1.5)
@@ -140,9 +140,9 @@ async def variable(hell):
             )
         heroku_var[variable] = value
     elif exe == "del":
-        event = await eor(hell, "Getting info to delete Variable")
+        event = await eor(phoenix, "Getting info to delete Variable")
         try:
-            variable = hell.pattern_match.group(2).split()[0]
+            variable = phoenix.pattern_match.group(2).split()[0]
         except IndexError:
             return await event.edit("`Please specify ConfigVars you want to delete`")
         await asyncio.sleep(1.5)
@@ -153,12 +153,12 @@ async def variable(hell):
             return await event.edit(f"`{variable}`  **does not exists**")
 
 
-@bot.on(hell_cmd(pattern="usage(?: |$)", outgoing=True))
+@bot.on(phoenix_cmd(pattern="usage(?: |$)", outgoing=True))
 @bot.on(sudo_cmd(pattern="usage(?: |$)", allow_sudo=True))
 async def dyno_usage(hell):
-    if hell.fwd_from:
+    if phoenix.fwd_from:
         return
-    event = await edit_or_reply(hell, "`Processing...`")
+    event = await edit_or_reply(phoenix, "`Processing...`")
     useragent = (
         "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -211,34 +211,34 @@ async def dyno_usage(hell):
         " ➠ __Dyno hours remaining this month__ :\n"
         f"     ★  `{hours}`**h**  `{minutes}`**m**  "
         f"**|**  `{percentage}`**%**"
-        f"\n\n**Owner :** {hell_mention}"
+        f"\n\n**Owner :** {phoenix_mention}"
     )
 
 
-@bot.on(hell_cmd(pattern="logs$"))
+@bot.on(phoenix_cmd(pattern="logs$"))
 @bot.on(sudo_cmd(pattern="logs$", allow_sudo=True))
 async def _(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
-        return await eor(dyno, f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {hell_grp} for help.", link_preview=False)
+        return await eor(dyno, f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {phoenix_grp} for help.", link_preview=False)
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
         app = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
-        return await dyno.reply(f"Make Sure Your Heroku AppName & API Key are filled correct. Visit {hell_grp} for help.", link_preview=False)
-    hell_data = app.get_log()
+        return await dyno.reply(f"Make Sure Your Heroku AppName & API Key are filled correct. Visit {phoenix_grp} for help.", link_preview=False)
+    phoenix_data = app.get_log()
     await eor(
-        dyno, hell_data, deflink=True, linktext=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {hell_mention}\n\n🚀** Pasted**  "
+        dyno, phoenix_data, deflink=True, linktext=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {phoenix_mention}\n\n🚀** Pasted**  "
     )
 """
     key = (
-        requests.post("https://nekobin.com/api/documents", json={"content": hell_data})
+        requests.post("https://nekobin.com/api/documents", json={"content": phoenix_data})
         .json()
         .get("result")
         .get("key")
     )
     hell_url = f"https://nekobin.com/{key}"
     url_raw = f"https://nekobin.com/raw/{key}"
-    foutput = f"**🗒️ Heroku Logs of 💯 lines. 🗒️** \n\n📍 [Nekobin]({hell_url}) & [Raw]({url_raw}) 📍\n\n🌟 **Bot Of :**  {hell_mention}"
+    foutput = f"**🗒️ Heroku Logs of 💯 lines. 🗒️** \n\n📍 [Nekobin]({hell_url}) & [Raw]({url_raw}) 📍\n\n🌟 **Bot Of :**  {phoenix_mention}"
 """
     
 
