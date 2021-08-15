@@ -7,10 +7,10 @@ import telethon.utils
 from telethon import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 
-from phoenix import LOGS, bot, tbot
-from phoenix.config import Config
-from phoenix.utils import load_module
-from phoenix.version import __phoenix__ as phoenixver
+from Phoenix import LOGS, bot, tbot
+from Phoenix.config import Config
+from Phoenix.utils import load_module
+from Phoenix.version import __phoenix__ as phoenixver
 hl = Config.HANDLER
 PHOENIX_PIC = Config.ALIVE_PIC or "https://telegra.ph/file/337b449d72c39b88f3167.jpg"
 
