@@ -10,7 +10,7 @@ from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
-from phoenix.config import Config
+from Phoenix.config import Config
 
 StartTime = time.time()
 
