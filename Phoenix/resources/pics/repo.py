@@ -1,5 +1,5 @@
-from hellbot.config import Config
-from hellbot.helpers import *
+from Phoenix.config import Config
+from Phoenix.helpers import *
 
 Chakka = "You"
 Print(f"Teri vhen ki .....")
