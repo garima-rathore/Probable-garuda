@@ -12,4 +12,4 @@ echo """
                                 
 """
 
-python3 -m phoenix
+python3 -m Phoenix
