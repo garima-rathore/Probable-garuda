@@ -5,7 +5,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 
 from . import *
 
-@bot.on(hell_cmd(pattern="extdl$", outgoing=True))
+@bot.on(phoenix_cmd(pattern="extdl$", outgoing=True))
 @bot.on(sudo_cmd(pattern="extdl$", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
@@ -18,7 +18,7 @@ async def install(event):
     for ixo in total_doxx:
         mxo = documentss[ixo].id
         downloaded_file_name = await event.client.download_media(
-            await bot.get_messages(chat, ids=mxo), "hellbot/plugins/"
+            await bot.get_messages(chat, ids=mxo), "Phoenix/plugins/"
         )
         if "(" not in downloaded_file_name:
             path1 = Path(downloaded_file_name)
@@ -39,7 +39,7 @@ async def install(event):
             )
 
 
-@bot.on(hell_cmd(pattern=r"installall (.*)"))
+@bot.on(phoenix_cmd(pattern=r"installall (.*)"))
 @bot.on(sudo_cmd(pattern=r"installall (.*)", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
@@ -53,7 +53,7 @@ async def install(event):
     for ixo in total_doxx:
         mxo = documentss[ixo].id
         downloaded_file_name = await event.client.download_media(
-            await bot.get_messages(chat, ids=mxo), "hellbot/plugins/"
+            await bot.get_messages(chat, ids=mxo), "Phoenix/plugins/"
         )
         if "(" not in downloaded_file_name:
             path1 = Path(downloaded_file_name)
