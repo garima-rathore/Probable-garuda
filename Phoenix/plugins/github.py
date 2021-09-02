@@ -8,7 +8,7 @@ from . import *
 
 GIT_TEMP_DIR = "./userbot/temp/"
 
-@bot.on(hell_cmd(pattern=r"commit"))
+@bot.on(phoenix_cmd(pattern=r"commit"))
 @bot.on(sudo_cmd(pattern=r"commit"))
 async def download(event):
     if event.fwd_from:
@@ -17,9 +17,9 @@ async def download(event):
         await eod(event, "`Please ADD Proper Access Token from github.com`")
         return
     if Config.GIT_REPO_NAME is None:
-        await eod(event, "`Please ADD Proper Github Repo Name of HellBot`")
+        await eod(event, "`Please ADD Proper Github Repo Name of Phoenix`")
         return
-    hellbot = await eor(event, "Processing ...")
+    Phoenix = await eor(event, "Processing ...")
     if not os.path.isdir(GIT_TEMP_DIR):
         os.makedirs(GIT_TEMP_DIR)
     start = datetime.now()
@@ -31,19 +31,19 @@ async def download(event):
             reply_message.media, GIT_TEMP_DIR
         )
     except Exception as e:
-        await eod(hellbot, str(e))
+        await eod(phoenix, str(e))
     else:
         end = datetime.now()
         ms = (end - start).seconds
         await event.delete()
-        await hellbot.edit(
+        await phoenix.edit(
             "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
-        await hellbot.edit("Committing to Github....")
-        await git_commit(downloaded_file_name, hellbot)
+        await phoenix.edit("Committing to Github....")
+        await git_commit(downloaded_file_name, phoenix)
 
 
-async def git_commit(file_name, hellbot):
+async def git_commit(file_name, phoenix):
     content_list = []
     access_token = Config.GITHUB_ACCESS_TOKEN
     g = Github(access_token)
@@ -61,7 +61,7 @@ async def git_commit(file_name, hellbot):
         if i == 'ContentFile(path="' + file_name + '")':
             return await hellbot.edit("`File Already Exists`")
             create_file = False
-    file_name = "hellbot/plugins/" + file_name
+    file_name = "Phoenix/plugins/" + file_name
     if create_file == True:
         file_name = file_name.replace("./userbot/temp/", "")
         print(file_name)
@@ -72,17 +72,17 @@ async def git_commit(file_name, hellbot):
             print("Committed File")
             ccess = Config.GIT_REPO_NAME
             ccess = ccess.strip()
-            await hellbot.edit(
+            await phoenix.edit(
                 f"`Commited On Your Github Repo`\n\n[Your STDPLUGINS](https://github.com/{ccess}/tree/master/userbot/plugins/)"
             )
         except:
             print("Cannot Create Plugin")
-            await eod(hellbot, "Cannot Upload Plugin")
+            await eod(phoenix, "Cannot Upload Plugin")
     else:
-        return await eod(hellbot, "`Committed Suicide`")
+        return await eod(phoenix, "`Committed Suicide`")
 
 
-@bot.on(hell_cmd(pattern="github (.*)", outgoing=True))
+@bot.on(phoenix_cmd(pattern="github (.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="github (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
