@@ -13,7 +13,7 @@ if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
     os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
 
 
-@bot.on(hell_cmd(pattern="pips(?: |$)(.*)", outgoing=True))
+@bot.on(phoenix_cmd(pattern="pips(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="pips(?: |$)(.*)", allow_sudo=True))
 async def pipcheck(pip):
     pipmodule = pip.pattern_match.group(1)
@@ -61,7 +61,7 @@ async def pipcheck(pip):
         await pip.edit(f"`Use {hl}plinfo execmod to see an example`")
 
 
-@bot.on(hell_cmd(pattern="suicide$"))
+@bot.on(phoenix_cmd(pattern="suicide$"))
 @bot.on(sudo_cmd(pattern="suicide$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -81,7 +81,7 @@ async def _(event):
     )
     stdout, stderr = await process.communicate()
     o = stdout.decode()
-    OUTPUT = f"**[Hêllẞø†'s](tg://need_update_for_some_feature/) SUICIDE BOMB:**\n{o}"
+    OUTPUT = f"**[PHOENIX's](tg://need_update_for_some_feature/) SUICIDE BOMB:**\n{o}"
     if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
@@ -98,7 +98,7 @@ async def _(event):
         await event.edit(OUTPUT)
 
 
-@bot.on(hell_cmd(pattern="date$"))
+@bot.on(phoenix_cmd(pattern="date$"))
 @bot.on(sudo_cmd(pattern="date$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -135,7 +135,7 @@ async def _(event):
         await event.edit(OUTPUT)
 
 
-@bot.on(hell_cmd(pattern="env$"))
+@bot.on(phoenix_cmd(pattern="env$"))
 @bot.on(sudo_cmd(pattern="env$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -155,7 +155,7 @@ async def _(event):
     )
     stdout, stderr = await process.communicate()
     o = stdout.decode()
-    OUTPUT = f"**[Hêllẞø†'s](tg://need_update_for_some_feature/) Environment Module:**\n\n\n{o}"
+    OUTPUT = f"**[PHOENIX†'s](tg://need_update_for_some_feature/) Environment Module:**\n\n\n{o}"
     if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
@@ -175,7 +175,7 @@ async def _(event):
         
 
 
-@bot.on(hell_cmd(pattern="speed$"))
+@bot.on(phoenix_cmd(pattern="speed$"))
 @bot.on(sudo_cmd(pattern="speed$", allow_sudo=True))
 async def _(event):
     await event.edit("calculating...")
@@ -196,7 +196,7 @@ async def _(event):
     )
     stdout, stderr = await process.communicate()
     o = stdout.decode()
-    OUTPUT = f"**[Hêllẞø†'s](tg://need_update_for_some_feature/) , Server Speed Calculated:**\n{o}"
+    OUTPUT = f"**[PHOENIX's](tg://need_update_for_some_feature/) , Server Speed Calculated:**\n{o}"
     if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
