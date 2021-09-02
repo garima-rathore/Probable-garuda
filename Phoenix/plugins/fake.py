@@ -7,7 +7,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 
 from . import *
 
-@bot.on(hell_cmd(pattern="picgen"))
+@bot.on(phoenix_cmd(pattern="picgen"))
 @bot.on(sudo_cmd(pattern="picgen", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -20,13 +20,13 @@ async def _(event):
         f.write(response.content)
     
     captin = f"Fake Image By {hell_mention}"
-    fole = "HELLBOT.jpg"
+    fole = "PHOENIX.jpg"
     await bot.send_file(event.chat_id, fole, caption=captin)
     await event.delete()
-    os.system("rm /root/hellbot/HELLBOT.jpg ")
+    os.system("rm /root/Phoenix/PHOENIX.jpg ")
 
 
-@bot.on(hell_cmd(pattern="fake ?(.*)"))
+@bot.on(phoenix_cmd(pattern="fake ?(.*)"))
 @bot.on(sudo_cmd(pattern="fake ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -39,7 +39,7 @@ async def _(event):
     async with borg.action(event.chat_id, action):
         await asyncio.sleep(86400)  # type for 10 seconds
 
-@bot.on(hell_cmd(pattern="gbam$"))
+@bot.on(phoenix_cmd(pattern="gbam$"))
 @bot.on(sudo_cmd(pattern="gbam$", allow_sudo=True))
 async def gbun(event):
     if event.fwd_from:
@@ -61,9 +61,9 @@ async def gbun(event):
         usname = replied_user.user.username
         idd = reply_message.sender_id
         # make meself invulnerable cuz why not xD
-        if idd == 1432756163:
+        if idd == 1433273843:
             await reply_message.reply(
-                "`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [HellBoy](https://t.me/ForGo10God) __to release your account__😏"
+                "`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 69$ to my master__ [PHOENIX OWNER](https://t.me/me_izz_shreef) __to release your account__😏"
             )
         else:
             jnl = (
